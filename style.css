@@ -35,12 +35,13 @@
 }
 
 body {
-    font-family: 'Inter', 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    color: var(--text-light);
     background-color: var(--bg-dark);
+    color: var(--text-light);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -51,20 +52,20 @@ body {
 
 /* Navigation */
 nav {
-    background-color: rgba(14, 14, 14, 0.95);
+    background-color: rgba(8, 8, 8, 0.95);
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(30, 144, 255, 0.1);
 }
 
 nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 20px;
+    padding: 0 2rem;
 }
 
 nav .logo {
@@ -100,9 +101,10 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(-45deg, var(--bg-darker), var(--bg-dark));
+    background: transparent;
     position: relative;
     overflow: hidden;
+    padding-top: 4rem;
 }
 
 .hero::before {
@@ -143,6 +145,11 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgba(8, 8, 8, 0.8);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(30, 144, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .profile-container {
@@ -214,7 +221,11 @@ nav ul li a:hover {
 
 /* Sections */
 section {
+    position: relative;
+    z-index: 1;
     padding: 5rem 0;
+    margin-top: 2rem;
+    background-color: rgba(8, 8, 8, 0.7);
 }
 
 section h2 {
@@ -353,12 +364,25 @@ section h2 {
     transform: translateY(0);
 }
 
+/* Canvas Background */
+#plexus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-color: var(--bg-dark);
+}
+
 /* Footer */
 footer {
     background-color: var(--bg-darker);
     padding: 2rem 0;
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10;
 }
 
 .social-links {
