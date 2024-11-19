@@ -7,59 +7,136 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <!-- Navbar -->
+    <nav>
         <div class="container">
-            <h1>Rusab Sarmun</h1>
-            <p>Machine Learning Researcher | Innovating AI for a Better Future</p>
-            <div class="social-links">
-                <a href="https://github.com/rusabsarmun" target="_blank">
-                    <img src="assets/icons/github.svg" alt="GitHub">
-                </a>
-                <a href="https://linkedin.com/in/rusabsarmun" target="_blank">
-                    <img src="assets/icons/linkedin.svg" alt="LinkedIn">
-                </a>
-                <a href="https://scholar.google.com/citations?user=XXXXX" target="_blank">
-                    <img src="assets/icons/google-scholar.svg" alt="Google Scholar">
-                </a>
-            </div>
+            <a href="#home" class="logo">Rusab Sarmun</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section id="about">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Hi, I'm Rusab Sarmun</h1>
+            <p>Machine Learning Researcher | AI Innovator | Problem Solver</p>
+            <a href="#about" class="btn">Learn More</a>
+            <a href="#contact" class="btn secondary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
             <h2>About Me</h2>
-            <p>I am a passionate machine learning researcher dedicated to solving real-world challenges through AI. My work focuses on developing innovative algorithms and systems to improve healthcare, automate tasks, and provide valuable insights.</p>
-        </section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id sagittis quam. Suspendisse potenti. Nullam euismod sem in tincidunt suscipit. Fusce posuere, mauris ut efficitur bibendum, elit turpis consequat eros, eget sollicitudin massa metus ut neque.</p>
+            <p>Nullam pharetra lacus at orci bibendum, vel luctus neque cursus. Phasellus lacinia, ipsum et malesuada tincidunt, sem felis dignissim neque, nec aliquet odio velit ac quam. Aliquam erat volutpat.</p>
+        </div>
+    </section>
 
-        <section id="achievements">
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <h2>Research Areas</h2>
+            <ul class="research-list">
+                <li>Deep Learning for Healthcare</li>
+                <li>Computer Vision and Image Segmentation</li>
+                <li>Explainable AI and Model Interpretability</li>
+                <li>Graph Neural Networks</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
             <h2>Achievements</h2>
             <div class="gallery">
-                <img src="assets/images/achievement1.jpg" alt="Achievement 1">
-                <img src="assets/images/achievement2.jpg" alt="Achievement 2">
-                <!-- Add more images as needed -->
+                <figure>
+                    <img src="assets/images/achievement1.jpg" alt="Achievement 1">
+                    <figcaption>Achievement 1</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/images/achievement2.jpg" alt="Achievement 2">
+                    <figcaption>Achievement 2</figcaption>
+                </figure>
+                <!-- More images -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="publications">
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
             <h2>Publications</h2>
             <ul>
                 <li>
-                    <b>Paper Title 1</b><br>
-                    <i>Conference/Journal Name</i>, Year<br>
-                    <a href="https://doi.org/XXXXXX" target="_blank">View Paper</a>
+                    <b>Lorem Ipsum Research Paper</b><br>
+                    <i>Conference on Lorem Ipsum, 2023</i><br>
+                    <a href="#">Read More</a>
                 </li>
                 <li>
-                    <b>Paper Title 2</b><br>
-                    <i>Conference/Journal Name</i>, Year<br>
-                    <a href="https://doi.org/XXXXXX" target="_blank">View Paper</a>
+                    <b>Dolor Sit Amet Study</b><br>
+                    <i>Journal of Dolor Sit Amet, 2022</i><br>
+                    <a href="#">Read More</a>
                 </li>
                 <!-- Add more publications -->
             </ul>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-cards">
+                <div class="card">
+                    <img src="assets/images/project1.jpg" alt="Project 1">
+                    <h3>Project 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="card">
+                    <img src="assets/images/project2.jpg" alt="Project 2">
+                    <h3>Project 2</h3>
+                    <p>Nullam euismod sem in tincidunt suscipit.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <!-- More projects -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Rusab Sarmun. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Rusab Sarmun. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#"><img src="assets/icons/github.svg" alt="GitHub"></a>
+                <a href="#"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+                <a href="#"><img src="assets/icons/google-scholar.svg" alt="Google Scholar"></a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
