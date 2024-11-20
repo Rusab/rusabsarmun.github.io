@@ -6,7 +6,7 @@ const achievements = [
         year: "2024",
         place: "Qatar University",
         description: "Runner Up at the Eighth QU Health Sector Annual Research Symposium",
-        image: "assets/images/achievements/QU_Health.jpg"
+        image: "assets/images/achievements/poster_certificate.png"
     },
     {
         title: "DUSS Competition",
@@ -30,25 +30,21 @@ const achievements = [
 const projects = [
     {
         category: "Machine Learning",
-        title: "CV Based Batch-Billing System",
-        description: "A computer vision-based billing system using YOLO for simultaneous detection of multiple retail products, featuring hybrid ArUco markers for weight-dependent items.",
-        image: "assets/images/projects/batch-billing.jpg", 
-        pdf: "assets/cv-batch-billing.pdf",
-        details: "projects/batch-billing.html"
+        title: "Medical Image Analysis",
+        description: "Developed deep learning models for medical image segmentation and classification. Achieved high accuracy in detecting abnormalities in X-ray and MRI scans.",
+        image: "assets/images/projects/ml1.jpg"
     },
     {
         category: "Robotics",
         title: "Autonomous Navigation Robot",
-        description: "A robot designed for autonomous navigation and obstacle avoidance using advanced sensors and control algorithms.",
-        image: "assets/images/projects/robot1.jpg", 
-        details: "projects/robot1.html"
+        description: "Developed an autonomous robot capable of navigating complex environments using SLAM and ROS. Implemented path planning algorithms and obstacle avoidance systems.",
+        image: "assets/images/projects/robotics1.jpg"
     },
     {
         category: "Robotics",
-        title: "Multi-terrain Robot",
-        description: "A versatile robot capable of traversing various terrains using adaptive locomotion mechanisms.",
-        image: "assets/images/projects/robot2.jpg", 
-        details: "projects/robot2.html"
+        title: "Smart Robotic Arm",
+        description: "Built a 6-DOF robotic arm with computer vision integration for pick-and-place tasks. Used inverse kinematics and motion planning for precise control.",
+        image: "assets/images/projects/robotics2.jpg"
     }
 ];
 
@@ -79,22 +75,12 @@ function createProjectCard(project) {
     card.className = 'project-card';
     
     card.innerHTML = `
-        <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy">
+        <div class="project-image">
+            <img src="${project.image}" alt="${project.title}" loading="lazy">
+        </div>
         <div class="project-content">
             <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="project-links">
-                ${project.pdf ? `
-                    <a href="${project.pdf}" target="_blank" class="project-link">
-                        <i class="fas fa-file-pdf"></i> PDF
-                    </a>
-                ` : ''}
-                ${project.details ? `
-                    <a href="${project.details}" class="project-link">
-                        <i class="fas fa-info-circle"></i> Learn More
-                    </a>
-                ` : ''}
-            </div>
+            <p class="description">${project.description}</p>
         </div>
     `;
     
@@ -131,22 +117,12 @@ function loadProjects() {
                     .filter(p => p.category === category)
                     .map(project => `
                         <div class="project-card">
-                            <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy">
+                            <div class="project-image">
+                                <img src="${project.image}" alt="${project.title}" loading="lazy">
+                            </div>
                             <div class="project-content">
                                 <h3>${project.title}</h3>
-                                <p>${project.description}</p>
-                                <div class="project-links">
-                                    ${project.pdf ? `
-                                        <a href="${project.pdf}" target="_blank" class="project-link">
-                                            <i class="fas fa-file-pdf"></i> PDF
-                                        </a>
-                                    ` : ''}
-                                    ${project.details ? `
-                                        <a href="${project.details}" class="project-link">
-                                            <i class="fas fa-info-circle"></i> Learn More
-                                        </a>
-                                    ` : ''}
-                                </div>
+                                <p class="description">${project.description}</p>
                             </div>
                         </div>
                     `).join('')}

@@ -3,7 +3,7 @@ class Particle {
         this.x = x;
         this.y = y;
         this.canvas = canvas;
-        this.size = Math.random() * 3 + 1.5; // Increased size range
+        this.size = Math.random() * 4 + 1.5; // Increased size range
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
         this.baseX = this.x;
@@ -101,7 +101,7 @@ class PlexusAnimation {
                 if (distance < 150) { // Increased threshold for more edges
                     this.ctx.beginPath();
                     this.ctx.strokeStyle = `rgba(30, 144, 255, ${0.3 * (1 - distance / 150)})`; // Higher opacity
-                    this.ctx.lineWidth = 1.5; // Slightly thicker lines
+                    this.ctx.lineWidth = 4; // Slightly thicker lines
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
                     this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
                     this.ctx.stroke();
