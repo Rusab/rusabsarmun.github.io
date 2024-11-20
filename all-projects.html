@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Rusab Sarmun</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="plexus"></canvas>
+    
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Rusab Sarmun</a>
+            <ul>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#publications">Publications</a></li>
+                <li><a href="index.html#achievements">Achievements</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="projects-page">
+        <div class="container">
+            <h1>All Projects</h1>
+            
+            <div class="category-section">
+                <h2>Machine Learning Projects</h2>
+                <div class="projects-grid">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2>Robotics Projects</h2>
+                <div class="projects-grid">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rusab Sarmun. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/plexus.js"></script>
+    <script src="js/content-loader.js"></script>
+    <script>
+        // Load all projects
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllProjects();
+        });
+    </script>
+</body>
+</html>

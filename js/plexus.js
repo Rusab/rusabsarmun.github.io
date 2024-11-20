@@ -3,15 +3,15 @@ class Particle {
         this.x = x;
         this.y = y;
         this.canvas = canvas;
-        this.size = Math.random() * 1.5 + 0.5; 
-        this.speedX = (Math.random() - 0.5) * 0.5; 
+        this.size = Math.random() * 3 + 1.5; // Increased size range
+        this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
         this.baseX = this.x;
         this.baseY = this.y;
     }
 
     draw(ctx) {
-        ctx.fillStyle = 'rgba(30, 144, 255, 0.6)'; 
+        ctx.fillStyle = 'rgba(30, 144, 255, 0.8)'; // Slightly more opaque
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
@@ -29,11 +29,11 @@ class Particle {
             const dx = mouse.x - this.x;
             const dy = mouse.y - this.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            
+
             if (distance < mouse.radius) {
                 const angle = Math.atan2(dy, dx);
                 const force = (mouse.radius - distance) / mouse.radius;
-                
+
                 this.x -= Math.cos(angle) * force * 2;
                 this.y -= Math.sin(angle) * force * 2;
             }
@@ -49,79 +49,61 @@ class PlexusAnimation {
         this.mouse = {
             x: undefined,
             y: undefined,
-            radius: 80
+            radius: 100
         };
-        this.init();
+
+        this.resizeCanvas();
+        this.initParticles();
+        this.setupEventListeners();
+        this.animate();
     }
 
-    init() {
-        this.resize();
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
 
-        const numberOfParticles = Math.floor((this.canvas.width * this.canvas.height) / 10000); 
-        
+    initParticles() {
+        const numberOfParticles = Math.min(100, (this.canvas.width * this.canvas.height) / 20000);
+        this.particles = [];
+
         for (let i = 0; i < numberOfParticles; i++) {
             const x = Math.random() * this.canvas.width;
             const y = Math.random() * this.canvas.height;
             this.particles.push(new Particle(x, y, this.canvas));
         }
-
-        window.addEventListener('resize', () => this.resize());
-        this.canvas.addEventListener('mousemove', (e) => this.handleMouse(e));
-        this.canvas.addEventListener('mouseleave', () => this.handleMouseLeave());
-        this.canvas.addEventListener('click', (e) => this.handleClick(e));
-
-        this.animate();
     }
 
-    resize() {
-        const dpr = window.devicePixelRatio || 1;
-        this.canvas.width = window.innerWidth * dpr;
-        this.canvas.height = window.innerHeight * dpr;
-        this.canvas.style.width = window.innerWidth + 'px';
-        this.canvas.style.height = window.innerHeight + 'px';
-        this.ctx.scale(dpr, dpr);
+    setupEventListeners() {
+        window.addEventListener('resize', () => {
+            this.resizeCanvas();
+            this.initParticles();
+        });
+
+        this.canvas.addEventListener('mousemove', (event) => {
+            this.mouse.x = event.clientX;
+            this.mouse.y = event.clientY;
+        });
+
+        this.canvas.addEventListener('mouseleave', () => {
+            this.mouse.x = undefined;
+            this.mouse.y = undefined;
+        });
     }
 
-    handleMouse(e) {
-        const rect = this.canvas.getBoundingClientRect();
-        this.mouse.x = e.clientX - rect.left;
-        this.mouse.y = e.clientY - rect.top;
-    }
-
-    handleMouseLeave() {
-        this.mouse.x = undefined;
-        this.mouse.y = undefined;
-    }
-
-    handleClick(e) {
-        const rect = this.canvas.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
-        
-        this.mouse.radius = 150;
-        this.mouse.x = clickX;
-        this.mouse.y = clickY;
-        
-        setTimeout(() => {
-            this.mouse.radius = 80;
-        }, 500);
-    }
-
-    connect() {
-        const maxDistance = 150; 
-        for (let a = 0; a < this.particles.length; a++) {
-            for (let b = a; b < this.particles.length; b++) {
-                const dx = this.particles[a].x - this.particles[b].x;
-                const dy = this.particles[a].y - this.particles[b].y;
+    drawLines() {
+        for (let i = 0; i < this.particles.length; i++) {
+            for (let j = i + 1; j < this.particles.length; j++) {
+                const dx = this.particles[i].x - this.particles[j].x;
+                const dy = this.particles[i].y - this.particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < maxDistance) {
-                    const opacity = 1 - (distance / maxDistance);
-                    this.ctx.strokeStyle = `rgba(30, 144, 255, ${opacity * 0.3})`; 
-                    this.ctx.lineWidth = opacity * 1.5; 
+                if (distance < 150) { // Increased threshold for more edges
                     this.ctx.beginPath();
-                    this.ctx.moveTo(this.particles[a].x, this.particles[a].y);
-                    this.ctx.lineTo(this.particles[b].x, this.particles[b].y);
+                    this.ctx.strokeStyle = `rgba(30, 144, 255, ${0.3 * (1 - distance / 150)})`; // Higher opacity
+                    this.ctx.lineWidth = 1.5; // Slightly thicker lines
+                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
                     this.ctx.stroke();
                 }
             }
@@ -130,13 +112,13 @@ class PlexusAnimation {
 
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+
         for (const particle of this.particles) {
             particle.update(this.mouse);
             particle.draw(this.ctx);
         }
-        
-        this.connect();
+
+        this.drawLines();
         requestAnimationFrame(() => this.animate());
     }
 }

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Based Batch-Billing System - Rusab Sarmun</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-detail {
+            padding-top: 80px;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(30, 144, 255, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-meta a:hover {
+            background: rgba(30, 144, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(8, 8, 8, 0.8);
+            border-radius: 10px;
+            border: 1px solid rgba(30, 144, 255, 0.1);
+        }
+
+        .project-content h2 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+        }
+
+        .project-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-badge {
+            background: rgba(30, 144, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo">Rusab Sarmun</a>
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#achievements">Achievements</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1>CV Based Batch-Billing System</h1>
+                <div class="project-meta">
+                    <a href="../assets/cv-batch-billing.pdf" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h2>Overview</h2>
+                <p>We propose a computer vision-based billing system for the check-out of retail items on the cash counter. This innovative system aims to revolutionize the traditional barcode scanning process by enabling simultaneous detection of multiple products, significantly reducing checkout times and improving customer experience.</p>
+
+                <h2>Technologies Used</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge">YOLO</span>
+                    <span class="tech-badge">Computer Vision</span>
+                    <span class="tech-badge">ArUco Markers</span>
+                    <span class="tech-badge">GUI Development</span>
+                    <span class="tech-badge">Deep Learning</span>
+                </div>
+
+                <h2>Key Features</h2>
+                <ul>
+                    <li>Simultaneous detection of multiple retail products</li>
+                    <li>GUI-based checkout application</li>
+                    <li>YOLO-based object detection architecture</li>
+                    <li>Integration of Hybrid ArUco Markers for weight-dependent products</li>
+                    <li>Real-time product detection and billing</li>
+                </ul>
+
+                <h2>Implementation Details</h2>
+                <p>The system uses a webcam placed above the checkout counter to scan retail items. We trained our model on 25 local retail products and 5 weight-dependent products using both authentic and synthetic images. A significant innovation in our approach is the use of Hybrid ArUco Markers instead of traditional QR codes for weight-dependent products, solving the long-distance detection challenge.</p>
+
+                <h2>Results and Impact</h2>
+                <p>Our system has achieved reasonable real-time retail product detection accuracy, making it viable for implementation in actual billing systems. This technology paves the way for a fully automated supermarket experience, potentially reducing checkout times and improving overall customer satisfaction in grocery stores.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/plexus.js"></script>
+</body>
+</html>
